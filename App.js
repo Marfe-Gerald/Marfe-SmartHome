@@ -1,18 +1,20 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+//import { createStackNavigator } from '@react-navigation/stack';
 
 import DashboardScreen from './components/DashboardScreen';
 import SettingsScreen from './components/SettingsScreen';
 import DevicesScreen from './components/DevicesScreen';
 
-const Stack = createStackNavigator();
+//const Stack = createStackNavigator();
+const tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator
+      <tab.Navigator
         initialRouteName="Dashboard"
         screenOptions={{
           headerStyle: { backgroundColor: '#ffffff' },
@@ -21,22 +23,22 @@ export default function App() {
           headerTintColor: '#111111',
         }}
       >
-        <Stack.Screen
+        <tab.Screen
           name="Dashboard"
           component={DashboardScreen}
           options={{ title: 'Smart Home' }}
         />
-        <Stack.Screen
+        <tab.Screen
           name="Settings"
           component={SettingsScreen}
           options={{ title: 'Settings' }}
         />
-        <Stack.Screen
+        <tab.Screen
           name="Devices"
           component={DevicesScreen}
           options={{ title: 'Settings' }}
         />
-      </Stack.Navigator>
+      </tab.Navigator>
     </NavigationContainer>
   );
 }
